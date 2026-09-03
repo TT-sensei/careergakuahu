@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#dff5e8">
+<title>キャリア探究ナビ｜未来のわたしをデザインする</title>
+<style>
+:root {
+  --bg: #f2f9f5;
+  --paper: #ffffff;
+  --ink: #1e2d26;
+  --muted: #5e7067;
+  --line: #d8e6df;
+  --green: #48a972;
+  --green-dark: #246340;
+  --mint: #e1f5ea;
+  --mint-2: #f0fbf4;
+  --yellow: #fef4cd;
+  --yellow-border: #f2dc87;
+  --blue: #e8f4fc;
+  --blue-border: #bcdcf2;
+  --shadow: 0 10px 28px rgba(30, 60, 42, 0.07);
+  --radius: 20px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 8% 5%, rgba(72,169,114,0.1), transparent 30%),
+              radial-gradient(circle at 92% 25%, rgba(140,200,225,0.12), transparent 28%),
+              var(--bg);
+  line-height: 1.65;
+}
+button, input, textarea, select, a { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+
+/* Layout */
+.app { max-width: 1200px; margin: 0 auto; padding: 20px 20px 80px; }
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 0 20px; border-bottom: 1px solid var(--line); margin-bottom: 24px;
+}
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 20px; color: var(--green-dark); }
+.brand-mark {
+  width: 42px; height: 42px; border-radius: 14px; background: var(--green);
+  display: grid; place-items: center; color: #fff; font-size: 20px; box-shadow: 0 6px 14px rgba(36,99,64,0.22);
+}
+.topbar-actions { display: flex; gap: 10px; }
+.btn-ghost {
+  border: 1px solid var(--line); background: rgba(255,255,255,0.85);
+  border-radius: 12px; padding: 8px 14px; color: var(--muted); font-size: 13px; font-weight: 700;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { background: #fff; color: var(--ink); border-color: var(--green); }
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #e7f8ef 0%, #ffffff 50%, #edf6fc 100%);
+  border: 1px solid var(--line); border-radius: 28px; padding: 32px; box-shadow: var(--shadow);
+  margin-bottom: 32px;
+}
+.hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 24px; align-items: center; }
+.kicker {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+  border-radius: 999px; background: #fff; border: 1px solid var(--line);
+  font-size: 13px; font-weight: 800; color: var(--green-dark); margin-bottom: 12px;
+}
+.hero h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.03em; }
+.hero-desc { font-size: 16px; color: var(--muted); margin: 0 0 20px; }
+
+.q-box {
+  background: #fff; border: 2px dashed var(--green); border-radius: 18px; padding: 14px 18px;
+  margin-bottom: 20px; font-weight: 800; color: var(--green-dark); display: flex; align-items: center; gap: 10px;
+}
+.q-box span { font-size: 22px; }
+
+.progress-card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 14px 18px; }
+.progress-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 800; color: var(--muted); }
+.progress-track { height: 10px; background: #e8f2ec; border-radius: 999px; overflow: hidden; margin-top: 10px; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green), #86d4a5); border-radius: 999px; transition: width 0.4s ease; }
+
+.hero-visual { text-align: center; }
+.hero-visual img { max-width: 100%; height: 230px; object-fit: contain; filter: drop-shadow(0 12px 12px rgba(30,60,42,0.12)); }
+
+/* Section Headers */
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; margin: 40px 0 18px; }
+.section-head h2 { margin: 0; font-size: 26px; letter-spacing: -0.02em; color: var(--green-dark); }
+.section-head p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+/* Quick Steps */
+.steps-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 30px; }
+.step-item {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 12px;
+  text-align: center; cursor: pointer; transition: all 0.2s;
+}
+.step-item:hover { transform: translateY(-3px); border-color: var(--green); box-shadow: var(--shadow); }
+.step-num { width: 28px; height: 28px; border-radius: 8px; background: var(--mint); color: var(--green-dark); font-weight: 900; font-size: 12px; margin: 0 auto 6px; display: grid; place-items: center; }
+.step-item h4 { margin: 0; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Lesson List Accordion */
+.lesson-list { display: grid; gap: 16px; }
+.lesson-card { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; transition: box-shadow 0.2s; }
+.lesson-card.open { box-shadow: var(--shadow); border-color: #bee3ce; }
+.lesson-head {
+  width: 100%; border: 0; background: #fff; padding: 20px 24px; display: grid;
+  grid-template-columns: auto 1fr auto; gap: 16px; text-align: left; align-items: center;
+}
+.lesson-no {
+  width: 46px; height: 46px; border-radius: 16px; background: var(--mint);
+  display: grid; place-items: center; color: var(--green-dark); font-weight: 900; font-size: 18px;
+}
+.lesson-no.done { background: var(--green); color: #fff; }
+.lesson-title { font-size: 19px; font-weight: 900; color: var(--ink); }
+.lesson-meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.chev { font-size: 22px; color: #a1b2a9; transition: transform 0.2s; }
+.lesson-card.open .chev { transform: rotate(180deg); }
+
+.lesson-body { display: none; padding: 0 24px 24px; border-top: 1px solid #f0f7f3; }
+.lesson-card.open .lesson-body { display: block; }
+
+.lesson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.info-box { border: 1px solid var(--line); border-radius: 18px; padding: 16px; background: #fafdfb; }
+.info-box h4 { margin: 0 0 8px; font-size: 14px; color: var(--green-dark); display: flex; align-items: center; gap: 6px; }
+.info-box p, .info-box ul { margin: 0; font-size: 14px; color: var(--ink); }
+.info-box ul { padding-left: 1.2em; }
+.info-box.focus { background: var(--yellow); border-color: var(--yellow-border); }
+.info-box.deep { background: var(--blue); border-color: var(--blue-border); }
+
+/* Worksheet Digital Interactive Form */
+.worksheet-form {
+  margin-top: 20px; background: #f7fcfa; border: 1px solid #cce8d8; border-radius: 18px; padding: 20px;
+}
+.worksheet-form h4 { margin: 0 0 12px; font-size: 15px; color: var(--green-dark); display: flex; align-items: center; gap: 8px; }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 13px; font-weight: 800; color: var(--muted); margin-bottom: 6px; }
+.form-group input[type="text"], .form-group textarea, .form-group select {
+  width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px;
+  background: #fff; font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(72,169,114,0.15); }
+
+/* Site Link Badges */
+.sites-flex { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.site-badge {
+  display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+  padding: 8px 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line);
+  font-size: 13px; font-weight: 800; color: var(--green-dark); transition: all 0.2s;
+}
+.site-badge:hover { border-color: var(--green); background: var(--mint); }
+
+/* Navi Tip Character Bubble */
+.navi-tip {
+  margin-top: 18px; display: flex; gap: 14px; align-items: center;
+  padding: 14px 16px; border-radius: 18px; background: var(--mint-2); border: 1px solid #cce8d7;
+}
+.navi-tip img { width: 56px; height: 56px; object-fit: contain; flex-none: true; }
+.navi-tip strong { display: block; font-size: 14px; color: var(--green-dark); }
+.navi-tip p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+
+/* Job Seeds Index Modal / Drawer */
+.job-explorer {
+  margin-top: 36px; background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 24px; box-shadow: var(--shadow);
+}
+.job-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.job-tag-btn {
+  border: 1px solid var(--line); background: #f8faf9; border-radius: 999px; padding: 6px 14px;
+  font-size: 13px; font-weight: 700; color: var(--muted); transition: all 0.2s;
+}
+.job-tag-btn.active, .job-tag-btn:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+.job-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 18px; }
+.job-mini-card {
+  border: 1px solid var(--line); border-radius: 16px; padding: 14px; background: #fff; transition: all 0.2s;
+}
+.job-mini-card:hover { border-color: var(--green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.04); }
+.job-mini-card .cat { font-size: 11px; font-weight: 800; color: var(--green); text-transform: uppercase; }
+.job-mini-card h4 { margin: 4px 0 6px; font-size: 16px; color: var(--ink); }
+.job-mini-card p { margin: 0; font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .steps-grid { grid-template-columns: repeat(3, 1fr); }
+  .lesson-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .app { padding: 14px 14px 60px; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .lesson-head { padding: 16px; }
+  .lesson-body { padding: 0 16px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">🌱</div>
+      <div>キャリア探究ナビ</div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-ghost" id="exportDataBtn" type="button">📝 下書きの一括出力</button>
+      <button class="btn-ghost" id="resetBtn" type="button">進み具合のリセット</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">💡 6年生・中学生 総合的な学習の時間</div>
+        <h1>未来のわたしを<br>デザインする。</h1>
+        <p class="hero-desc">単なる職業調べで終わらせず、仕事を通して「どんな大人になりたいか」「どう社会と関わりたいか」を自分自身で探究していこう。</p>
+        
+        <div class="q-box">
+          <span>🎯</span>
+          <div>単元を貫く問い：自分らしく社会とかかわるために、どんな生き方を選び、今どんな力を伸ばしたいだろう。</div>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-row">
+            <span>探究の進みぐあい（全15時間）</span>
+            <strong id="progressText">0 / 15 完了 (0%)</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://tt-sensei.github.io/navi-character-/assets/web/groups/daily/group-daily-study.webp" alt="探究学習キャラクター" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- Step Fast Nav -->
+  <div class="section-head">
+    <div>
+      <h2>探究の道すじ（ステップ）</h2>
+      <p>タップするとそのステップの学習時間へジャンプします。</p>
+    </div>
+  </div>
+  <div class="steps-grid" id="stepsFastNav"></div>
+
+  <!-- Lesson List (Main Accordion) -->
+  <div class="section-head">
+    <div>
+      <h2>15時間の探究ワーク</h2>
+      <p>毎時間のポイントを確認し、デジタルワークシートに考えを入力してみよう。</p>
+    </div>
+  </div>
+  <main class="lesson-list" id="lessonContainer"></main>
+
+  <!-- Job Seeds Explorer -->
+  <section class="job-explorer">
+    <div class="section-head" style="margin: 0 0 10px;">
+      <div>
+        <h2>仕事の種を探そう（分野別インデックス）</h2>
+        <p>「好き・得意・願い」から職業候補を広げるためのヒント集です。</p>
+      </div>
+    </div>
+    <div class="job-tags" id="jobCatFilters"></div>
+    <div class="job-cards-grid" id="jobCardsGrid"></div>
+  </section>
+
+</div>
+
+<script>
+// External Character Assets & Master Data
+const BASE_IMG = "https://raw.githubusercontent.com/TT-sensei/navi-character-/main/assets/characters/";
+const NAVI_ICONS = {
+  kai: BASE_IMG + "kai/reference.jpeg",
+  nami: BASE_IMG + "nami/reference.jpeg",
+  saku: BASE_IMG + "saku/reference.jpeg",
+  sora: BASE_IMG + "sora/reference.jpeg",
+  riku: BASE_IMG + "riku/reference.jpeg",
+  tsuki: BASE_IMG + "tsuki/reference.jpeg"
+};
+
+const STEP_DEFINITIONS = [
+  { no: 1, title: "1. 導入と振り返り", desc: "5月の自分からの成長と更新" },
+  { no: 2, title: "2. 広げる・決定", desc: "好き・得意・願いから3つ選ぶ" },
+  { no: 3, title: "3. 調べ方の工夫", desc: "信頼できる事実と自分意見の整理" },
+  { no: 4, title: "4. 比較と深掘り", desc: "3つの比較・一つの選択" },
+  { no: 5, title: "5. 社会と未来", desc: "役割と未来の変化を予想" },
+  { no: 6, title: "6. 提案と交流", desc: "未来の自分提案書・振り返り" }
+];
+
+const JOB_SEEDS_DATA = [
+  { cat: "人とかかわる", name: "小学校・中学校教師", desc: "子どもの成長を支え、学びや生活をともに創る仕事。" },
+  { cat: "人とかかわる", name: "保育士・幼稚園教諭", desc: "乳幼児の発達や気持ちによりそい、すくすく育てる仕事。" },
+  { cat: "人とかかわる", name: "看護師・医療従事者", desc: "病気やケガの人を手当てし、心と身体の回復を支える仕事。" },
+  { cat: "人とかかわる", name: "スクールカウンセラー・心理職", desc: "人の心のお悩みや悩みに耳を傾け、気持ちを整理する手助けをする仕事。" },
+  { cat: "作る・表現する", name: "建築士・インテリアデザイナー", desc: "人が安心して快適に暮らせる建物や空間をデザインする仕事。" },
+  { cat: "作る・表現する", name: "グラフィックデザイナー・動画クリエイター", desc: "色やカタチ、映像を使って情報や魅力をわかりやすく伝える仕事。" },
+  { cat: "作る・表現する", name: "食品開発・パティシエ", desc: "新しい味や安心で美味しい食べ物をつくり、笑顔を届ける仕事。" },
+  { cat: "調べる・考える", name: "研究者・科学者", desc: "自然や技術の未解明な疑問を実験や観察で解き明かす仕事。" },
+  { cat: "調べる・考える", name: "気象予報士", desc: "天候や気候データを分析し、防災や日常に役立つ天気を伝える仕事。" },
+  { cat: "守る・支える", name: "消防士・救急救命士", desc: "火災や災害、急病の現場へ駆けつけ、人々の命と街を守る仕事。" },
+  { cat: "守る・支える", name: "弁護士・行政職", desc: "ルールを守り、困っている人を助けたり住みやすい街をつくったりする仕事。" },
+  { cat: "自然・生き物", name: "獣医師・動物飼育員", desc: "動物の健康を守り、生命の大切さを伝える仕事。" },
+  { cat: "自然・生き物", name: "農家・森林官", desc: "作物や森を育て、自然環境と人間の食の循環を守る仕事。" },
+  { cat: "機械・情報", name: "プログラマー・システムエンジニア", desc: "コードを書いて便利なアプリやシステムを動かす仕事。" },
+  { cat: "機械・情報", name: "ロボットエンジニア", desc: "人の代わりに作業をするロボットを設計・開発する仕事。" }
+];
+
+const LESSON_MASTERS = [
+  {
+    no: 1, step: 1, title: "導入：5月の自分と今の自分", sheet: "①「5月の自分と今の自分」",
+    goal: "運動会や修学旅行などの経験をふり返り、『今の自分』の特徴や成長を更新する。",
+    focus: ["5月に書いた自分の特徴を確かめる", "成長したこと（運動会・修学旅行など）を具体的に書く", "今の自分を表す言葉を3つ選ぶ"],
+    deep: "『～ができるようになった』だけでなく、『どんな経験がきっかけでそう思ったか』まで書くと説得力が出ます。",
+    sites: [], navi: "nami", msg: "5月の自分と違っていて当然！成長した証拠だよ。",
+    fields: [
+      { id: "ws1_growth", label: "運動会や修学旅行などで成長したこと・見つけた自分の力", type: "textarea" },
+      { id: "ws1_words", label: "今の自分を表す3つの言葉（例：粘り強い・思いやり・計画的）", type: "text" }
+    ]
+  },
+  {
+    no: 2, step: 2, title: "仕事の種を広げよう", sheet: "②「仕事の種を広げよう」",
+    goal: "「好き」「得意」「願い」の3つの視点から、気になる仕事の候補を広げる。",
+    focus: ["好き：夢中になれること・調べるのが好きなこと", "得意：人から頼まれること・比較的うまくできること", "願い：どんな人を助けたいか・どんな社会にしたいか"],
+    deep: "最初から1つに絞り込まず、各欄に2〜4つずつ候補を挙げてみましょう。",
+    sites: [["13歳のハローワーク『好きで調べる』", "https://www.13hw.com/jobidx/jobfavidx.html"]], navi: "sora", msg: "まだ3つに決めなくて大丈夫。種をたくさんまこう！",
+    fields: [
+      { id: "ws2_like", label: "「好き」から連想できる仕事候補（2〜4個）", type: "text" },
+      { id: "ws2_strong", label: "「得意」から連想できる仕事候補（2〜4個）", type: "text" },
+      { id: "ws2_wish", label: "「願い」から連想できる仕事候補（2〜4個）", type: "text" }
+    ]
+  },
+  {
+    no: 3, step: 2, title: "調べる3つの仕事を決定する", sheet: "③「わたしが調べる3つの仕事」",
+    goal: "広がった候補の中から「興味」「強み」「願い」に沿って3つの仕事を選び、根拠を書く。",
+    focus: ["仕事1（興味）：今、やってみたい・知りたい仕事", "仕事2（強み）：自分の強みが活かせそうな仕事", "仕事3（願い）：人や社会に関わりたい仕事"],
+    deep: "「私は〇〇に興味があり、〇〇してみたいから」という根拠（理由）の型を意識しましょう。",
+    sites: [["13歳のハローワーク", "https://www.13hw.com/"], ["厚生労働省 job tag", "https://shigoto.mhlw.go.jp/"]], navi: "saku", msg: "似すぎた3つより、ちょっと違うタイプを混ぜると比較が面白いよ。",
+    fields: [
+      { id: "ws3_job1", label: "仕事1（興味）の名称と選んだ根拠", type: "textarea" },
+      { id: "ws3_job2", label: "仕事2（強み）の名称と選んだ根拠", type: "textarea" },
+      { id: "ws3_job3", label: "仕事3（願い）の名称と選んだ根拠", type: "textarea" }
+    ]
+  },
+  {
+    no: 4, step: 3, title: "調べ方を知る（情報の見方）", sheet: "④「情報の見方・出典メモ」",
+    goal: "信頼できる情報源の選び方と、『事実』と『自分の考え』を分けてメモする方法を学ぶ。",
+    focus: ["コピペをせず短い言葉で記録する", "サイトに書かれていること（事実）と自分の思ったこと（考え）を分離する", "見たサイト名（出典）を記録する"],
+    deep: "「分からない言葉」をそのままにせず、後で調べるメモを作るのがコツです。",
+    sites: [["厚生労働省 job tag", "https://shigoto.mhlw.go.jp/"]], navi: "kai", msg: "事実と考えを分けるのが探究のファーストステップ！",
+    fields: [
+      { id: "ws4_fact_vs_opinion", label: "調べた『事実』と『自分の考え』を区別して書く練習メモ", type: "textarea" }
+    ]
+  },
+  {
+    no: 5, step: 3, title: "仕事調べA（興味のある仕事）", sheet: "⑤「仕事リサーチカードA」",
+    goal: "1つ目の「興味がある仕事」について、共通項目で詳しくリサーチする。",
+    focus: ["どんな仕事か・誰のためか", "必要な力・やりがい・大変なこと", "自分とのつながり・出典"],
+    deep: "給料や見た目の華やかさだけでなく、「どんな一日を過ごすか」に着目してみましょう。",
+    sites: [["厚生労働省 job tag", "https://shigoto.mhlw.go.jp/"], ["13歳のハローワーク", "https://www.13hw.com/"]], navi: "kai", msg: "カードAをしっかり作ると、BとCもスムーズに進むよ。",
+    fields: [
+      { id: "ws5_card_a", label: "仕事Aのメモ（仕事内容・必要な力・やりがい・出典など）", type: "textarea" }
+    ]
+  },
+  {
+    no: 6, step: 3, title: "仕事調べB（強みを生かせる仕事）", sheet: "⑥「仕事リサーチカードB」",
+    goal: "2つ目の「自分の強みが活かせそうな仕事」について調べる。",
+    focus: ["仕事内容と必要な力の合致点", "どんな相手と関わるか", "大変なことと克服の方法"],
+    deep: "自分のどんな学校生活の強み（例：話を聞く力、整理整頓）がその仕事で使えそうか関連付けます。",
+    sites: [["厚生労働省 job tag", "https://shigoto.mhlw.go.jp/"]], navi: "tsuki", msg: "『自分の強み』がどう活きるか想像しながら調べよう。",
+    fields: [
+      { id: "ws6_card_b", label: "仕事Bのメモ（強みとの繋がり・必要な力・出典）", type: "textarea" }
+    ]
+  },
+  {
+    no: 7, step: 3, title: "仕事調べC（願いにつながる仕事）", sheet: "⑦「仕事リサーチカードC」",
+    goal: "3つ目の「願いにつながる仕事」について調べる。",
+    focus: ["社会や人のどんな困りごとを解決しているか", "目立たないけれど大切な役割", "自分とのつながり"],
+    deep: "『ありがとう』と言われる瞬間や、社会への役立ち方を読み取ろう。",
+    sites: [["厚生労働省 job tag", "https://shigoto.mhlw.go.jp/"]], navi: "riku", msg: "3枚のリサーチカードが出そろったね！",
+    fields: [
+      { id: "ws7_card_c", label: "仕事Cのメモ（人や社会への役立ち方・出典）", type: "textarea" }
+    ]
+  },
+  {
+    no: 8, step: 4, title: "中間交流・質問メモ", sheet: "⑧「中間交流・質問メモ」",
+    goal: "友達に調べた内容を説明し、質問や感想をもらうことで探究の問いを更新する。",
+    focus: ["相手の調べていた仕事で初めて知ったこと", "相手からもらった質問", "質問を受けて次に調べること・変わった考え"],
+    deep: "『なるほど』で終わらせず、もらった質問から『自分の調べ直しポイント』を発見しよう。",
+    sites: [], navi: "nami", msg: "友達の視点が入ると、自分の考えがグッと深まるよ。",
+    fields: [
+      { id: "ws8_interchange", label: "友達からの質問と、それを受けて次に調べること", type: "textarea" }
+    ]
+  },
+  {
+    no: 9, step: 4, title: "3つの仕事を比べる", sheet: "⑨「3つの仕事比較シート」",
+    goal: "3つの仕事を同じ観点（仕事内容・必要な力・やりがい・繋がり）で並べて比較・分析する。",
+    focus: ["三つに共通すること", "大きく違うこと", "調べる前と考えが変わったこと"],
+    deep: "単なる『どれが好きか』ではなく、『共通点と相違点』を整理することが分析の鍵です。",
+    sites: [["厚生労働省 job tag", "https://shigoto.mhlw.go.jp/"]], navi: "tsuki", msg: "ここが職業調べから『分析』に変わる重要なステップ！",
+    fields: [
+      { id: "ws9_compare_common", label: "3つの仕事に共通すること", type: "textarea" },
+      { id: "ws9_compare_diff", label: "3つの仕事の大きく違うこと", type: "textarea" }
+    ]
+  },
+  {
+    no: 10, step: 4, title: "一つを深める・選択理由", sheet: "⑩「深める仕事・選択理由」",
+    goal: "単元の後半で最も深く考えたい仕事を一つ選び、その根拠を整理する。",
+    focus: ["もっと知りたいこと・新しい疑問があるか", "自分や社会とのつながりが考えられるか", "なりたい理由以外の根拠"],
+    deep: "最終的な決定ではなく『この探究で深めたい仕事』という位置づけで選びます。",
+    sites: [], navi: "saku", msg: "『なぜこの仕事をもっと深く考えたいか』理由を明確にしよう。",
+    fields: [
+      { id: "ws10_selected_job", label: "深く考える一つと、その選んだ理由", type: "textarea" }
+    ]
+  },
+  {
+    no: 11, step: 5, title: "仕事と社会（なくなったら？）", sheet: "⑪「この仕事がなくなったら？」",
+    goal: "選んだ仕事が社会で果たしている役割と、他の仕事との繋がりを考察する。",
+    focus: ["この仕事を必要としている人", "この仕事がなくなると困ること", "「この仕事は社会の中で〇〇という役割を果たしている」とまとめる"],
+    deep: "目立たない部分で支えてくれている他職種との連携（チームワーク）にも注目しましょう。",
+    sites: [], navi: "riku", msg: "どんな仕事も社会のパズルの一片なんだね。",
+    fields: [
+      { id: "ws11_society_role", label: "「この仕事は社会の中で〇〇という役割を果たしている」のまとめ文", type: "textarea" }
+    ]
+  },
+  {
+    no: 12, step: 5, title: "仕事の未来予想", sheet: "⑫「仕事の未来予想」",
+    goal: "AIや自動化、社会の変化によって、その仕事がどう変わり残る役割は何かを考える。",
+    focus: ["今社会で起きている変化（AI、オンライン化など）", "仕事の何が変わりそうか", "それでも人に必要とされそうな役割"],
+    deep: "『なくなる/残る』の極端な二択ではなく、『求められる力の変化』として捉えましょう。",
+    sites: [["厚生労働省 job tag", "https://shigoto.mhlw.go.jp/"]], navi: "kai", msg: "根拠のある未来予想をしてみよう！",
+    fields: [
+      { id: "ws12_future_predict", label: "AIや変化の中で『それでも人が果たす役割』の予想", type: "textarea" }
+    ]
+  },
+  {
+    no: 13, step: 6, title: "自分につなげる（未来への一歩）", sheet: "⑬「今の自分と未来への一歩」",
+    goal: "調べた仕事に必要な力と、中学生の今から伸ばせる行動を結びつける。",
+    focus: ["仕事に必要な力", "これから伸ばしたい力", "中学校で挑戦できること・今月からできる小さな行動"],
+    deep: "遠い未来の資格だけでなく『明日の学校生活での意識』にまで引き寄せます。",
+    sites: [], navi: "nami", msg: "未来は、今日の小さな一歩からつくられるよ。",
+    fields: [
+      { id: "ws13_my_step", label: "中学生として今月からできる小さな挑戦・行動", type: "textarea" }
+    ]
+  },
+  {
+    no: 14, step: 6, title: "成果物作成（未来の自分提案書）", sheet: "⑭「未来の自分提案書」",
+    goal: "これまでの探究の足あとを全資料から振り返り、『未来の自分提案書』として構成する。",
+    focus: ["提案書の構成（自分・3つの仕事・比べた結果・深めた仕事・社会と未来・自分の一歩）", "生き方や価値観が見えるタイトルをつける", "引用・出典の明記"],
+    deep: "単なる『〇〇になるために』ではなく『人を笑顔にする仕事と私の生き方』のようなタイトルを工夫しましょう。",
+    sites: [], navi: "saku", msg: "これまでのワークシートが全部宝物になっているよ！",
+    fields: [
+      { id: "ws14_proposal_title", label: "提案書のタイトル案（価値観が見える題名）", type: "text" },
+      { id: "ws14_proposal_outline", label: "提案書全体の構成メモ・伝えたいメッセージ", type: "textarea" }
+    ]
+  },
+  {
+    no: 15, step: 6, title: "交流・単元の振り返り", sheet: "⑮「友達から学んだこと」⑯「単元振り返り」",
+    goal: "成果物を相互鑑賞し、単元を貫く問いに対する自分なりの答えを更新・まとめ評価する。",
+    focus: ["ギャラリーウォークで友達の提案書から学んだこと", "探究を通して変わった自分の生き方観・働くことへの考え", "単元を貫く問いへの答え"],
+    deep: "最初に立てた問い『自分らしく社会とかかわるために…』に戻って振り返りを締めくくります。",
+    sites: [], navi: "nami", msg: "単元おつかれさま！素敵な未来をデザインできたね。",
+    fields: [
+      { id: "ws15_final_reflection", label: "【結論】単元を貫く問い「自分らしく社会と関わり、どんな力を伸ばしたいか」の自分の答え", type: "textarea" }
+    ]
+  }
+];
+
+// App State Management via LocalStorage
+const STORAGE_KEY = "career_quest_navi_v2";
+let appState = {
+  completed: [],
+  formData: {}
+};
+
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try { appState = JSON.parse(saved); } catch (e) { console.error(e); }
+  }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+  updateProgressUI();
+}
+
+function updateProgressUI() {
+  const count = appState.completed.length;
+  const total = LESSON_MASTERS.length;
+  const pct = Math.round((count / total) * 100);
+  
+  document.getElementById("progressText").textContent = `${count} / ${total} 完了 (${pct}%)`;
+  document.getElementById("progressFill").style.width = `${pct}%`;
+}
+
+// Render Functions
+function renderStepsFastNav() {
+  const container = document.getElementById("stepsFastNav");
+  container.innerHTML = STEP_DEFINITIONS.map(s => `
+    <div class="step-item" onclick="scrollToStep(${s.no})">
+      <div class="step-num">S${s.no}</div>
+      <h4>${s.title}</h4>
+    </div>
+  `).join("");
+}
+
+function renderLessons() {
+  const container = document.getElementById("lessonContainer");
+  container.innerHTML = LESSON_MASTERS.map(l => {
+    const isDone = appState.completed.includes(l.no);
+    const naviImg = NAVI_ICONS[l.navi] || NAVI_ICONS.nami;
+
+    // Build worksheet form inputs
+    const formFieldsHTML = l.fields.map(f => {
+      const val = appState.formData[f.id] || "";
+      if (f.type === "textarea") {
+        return `
+          <div class="form-group">
+            <label for="${f.id}">${f.label}</label>
+            <textarea id="${f.id}" rows="3" onchange="handleInputChange('${f.id}', this.value)" placeholder="ここに入力・メモできます...">${val}</textarea>
+          </div>`;
+      } else {
+        return `
+          <div class="form-group">
+            <label for="${f.id}">${f.label}</label>
+            <input type="text" id="${f.id}" value="${val}" onchange="handleInputChange('${f.id}', this.value)" placeholder="ここに入力...">
+          </div>`;
+      }
+    }).join("");
+
+    // Build site badges
+    const sitesHTML = l.sites.length > 0 ? l.sites.map(s => `
+      <a href="${s[1]}" target="_blank" rel="noopener" class="site-badge">
+        <span>🌐</span> ${s[0]} ↗
+      </a>
+    `).join("") : `<span style="font-size:13px; color:var(--muted)">※この時間はお手元のワークシートや友達との対話を中心に進めます。</span>`;
+
+    return `
+      <article class="lesson-card" id="lesson-${l.no}" data-step="${l.step}">
+        <button class="lesson-head" type="button" onclick="toggleLesson(${l.no})">
+          <div class="lesson-no ${isDone ? 'done' : ''}">${isDone ? '✓' : l.no}</div>
+          <div>
+            <div class="lesson-title">第${l.no}時：${l.title}</div>
+            <div class="lesson-meta">ワークシート：${l.sheet} | ステップ${l.step}</div>
+          </div>
+          <div class="chev">⌄</div>
+        </button>
+
+        <div class="lesson-body">
+          <div class="lesson-grid">
+            <div class="info-box focus">
+              <h4><span>🎯</span> 今日の学習ポイント</h4>
+              <ul>${l.focus.map(f => `<li>${f}</li>`).join("")}</ul>
+            </div>
+            <div class="info-box deep">
+              <h4><span>🔍</span> 深掘りガイド</h4>
+              <p>${l.deep}</p>
+            </div>
+          </div>
+
+          <!-- Digital Worksheet Assistant -->
+          <div class="worksheet-form">
+            <h4><span>📝</span> ワークシート記入メモ・デジタル下書き</h4>
+            ${formFieldsHTML}
+          </div>
+
+          <!-- Sites & Resources -->
+          <div class="info-box" style="margin-top: 14px;">
+            <h4><span>🔗</span> 活用するWebサイト・資料</h4>
+            <div class="sites-flex">${sitesHTML}</div>
+          </div>
+
+          <!-- Character Tip -->
+          <div class="navi-tip">
+            <img src="${naviImg}" alt="ナビキャラ" onerror="this.src='https://tt-sensei.github.io/navi-character-/assets/web/groups/daily/group-daily-study.webp'">
+            <div>
+              <strong>ナビからのアドバイス</strong>
+              <p>${l.msg}</p>
+            </div>
+          </div>
+
+          <!-- Done Check Button -->
+          <div style="margin-top: 16px; text-align: right;">
+            <button class="btn-ghost" type="button" onclick="toggleComplete(${l.no})">
+              ${isDone ? '🔄 未完了に戻す' : '✅ この時間の学習を完了にする'}
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  updateProgressUI();
+}
+
+function renderJobExplorer() {
+  const categories = ["すべて", "人とかかわる", "作る・表現する", "調べる・考える", "守る・支える", "自然・生き物", "機械・情報"];
+  const filterContainer = document.getElementById("jobCatFilters");
+  
+  filterContainer.innerHTML = categories.map((c, i) => `
+    <button class="job-tag-btn ${i === 0 ? 'active' : ''}" onclick="filterJobSeeds('${c}', this)">${c}</button>
+  `).join("");
+
+  filterJobSeeds("すべて", filterContainer.children[0]);
+}
+
+function filterJobSeeds(cat, btn) {
+  if (btn) {
+    document.querySelectorAll(".job-tag-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  }
+
+  const grid = document.getElementById("jobCardsGrid");
+  const filtered = cat === "すべて" ? JOB_SEEDS_DATA : JOB_SEEDS_DATA.filter(j => j.cat === cat);
+
+  grid.innerHTML = filtered.map(j => `
+    <div class="job-mini-card">
+      <div class="cat">${j.cat}</div>
+      <h4>${j.name}</h4>
+      <p>${j.desc}</p>
+    </div>
+  `).join("");
+}
+
+// Action Handlers
+function toggleLesson(no) {
+  const el = document.getElementById(`lesson-${no}`);
+  el.classList.toggle("open");
+}
+
+function scrollToStep(stepNo) {
+  const firstLesson = LESSON_MASTERS.find(l => l.step === stepNo);
+  if (firstLesson) {
+    const el = document.getElementById(`lesson-${firstLesson.no}`);
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el.classList.contains("open")) {
+      el.classList.add("open");
+    }
+  }
+}
+
+function handleInputChange(key, value) {
+  appState.formData[key] = value;
+  saveState();
+}
+
+function toggleComplete(no) {
+  const idx = appState.completed.indexOf(no);
+  if (idx >= 0) {
+    appState.completed.splice(idx, 1);
+  } else {
+    appState.completed.push(no);
+  }
+  saveState();
+  renderLessons();
+  document.getElementById(`lesson-${no}`).classList.add("open");
+}
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  if (confirm("これまでの進み具合とメモデータをすべてリセットしますか？")) {
+    appState = { completed: [], formData: {} };
+    saveState();
+    renderLessons();
+  }
+});
+
+document.getElementById("exportDataBtn").addEventListener("click", () => {
+  let exportText = "=== キャリア探究ワークシート入力メモ一覧 ===\n\n";
+  LESSON_MASTERS.forEach(l => {
+    exportText += `【第${l.no}時：${l.title}】\n`;
+    l.fields.forEach(f => {
+      const val = appState.formData[f.id] || "（未入力）";
+      exportText += `・${f.label}：\n  ${val}\n`;
+    });
+    exportText += "\n";
+  });
+
+  const blob = new Blob([exportText], { type: "text/plain;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "キャリア探究_学習メモ下書き.txt";
+  a.click();
+});
+
+// Initial Setup
+window.addEventListener("DOMContentLoaded", () => {
+  loadState();
+  renderStepsFastNav();
+  renderLessons();
+  renderJobExplorer();
+});
+</script>
+</body>
+</html>
